@@ -5,7 +5,8 @@ body {
     padding: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     color: #333;
 }
@@ -20,10 +21,11 @@ table {
     width: 60%;
     border-collapse: collapse;
     background: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
@@ -45,14 +47,16 @@ button {
 /* Form fields */
 form {
     max-width: 500px;
-    margin: 10px auto; /* centers the form */
+    margin: 10px auto;
+    /* centers the form */
     background: #fff;
     padding: 15px;
     border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-form input, form select {
+form input,
+form select {
     width: 100%;
     padding: 5px;
     margin-top: 5px;
@@ -67,6 +71,7 @@ form input, form select {
     justify-content: center;
     margin-bottom: 10px;
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
 }

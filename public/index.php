@@ -1,21 +1,20 @@
 <?php
 
-// Load core files
 require_once __DIR__ . '/../app/config/Database.php';
 require_once __DIR__ . '/../app/models/User.php';
 require_once __DIR__ . '/../app/controllers/UserController.php';
 
-// Create DB connection
+//db connection
 $database = new Database();
 $db = $database->getConnection();
 
 // Pass DB connection to controller
-$controller = new UserController($db);  
-    
-// Decide which action to run based on URL
+$controller = new UserController($db);
+
+// which action to run
 $action = $_GET['action'] ?? 'index'; // default action is 'index'
 
-// If that method exists in the controller, call it
+//method exists in the controlle show it
 if (method_exists($controller, $action)) {
     $controller->$action();
 } else {

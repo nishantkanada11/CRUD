@@ -10,20 +10,20 @@ class UserController
         $this->user = new User($db);
     }
 
-    // Show all users
+
     public function index()
     {
         $users = $this->user->all();
         include __DIR__ . '/../views/users/index.php';
     }
 
-    // Show create form
+
     public function create()
     {
         include __DIR__ . '/../views/users/create.php';
     }
 
-    // Store new user
+
     public function store()
     {
         $name = $_POST['name'];
@@ -44,7 +44,7 @@ class UserController
         exit;
     }
 
-    // Show edit form
+
     public function edit()
     {
         $id = $_GET['id'];
@@ -52,26 +52,25 @@ class UserController
         include __DIR__ . '/../views/users/edit.php';
     }
 
-    // Update user
-public function update() {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $department = $_POST['department'];
 
-    $result = $this->user->update($id, $name, $email, $mobile, $department);
+    public function update()
+    {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $department = $_POST['department'];
 
-    if ($result === "exists") {
-        echo "<script>alert('Email or Mobile already exists!'); window.history.back();</script>";
-        exit;
+        $result = $this->user->update($id, $name, $email, $mobile, $department);
+
+        if ($result === "exists") {
+            echo "<script>alert('Email or Mobile already exists!'); window.history.back();</script>";
+            exit;
+        }
+
+        header("Location: index.php?action=index");
     }
 
-    header("Location: index.php?action=index");
-}
-
-
-    // Delete user
     public function delete()
     {
         $id = $_GET['id'];

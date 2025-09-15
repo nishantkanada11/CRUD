@@ -1,6 +1,7 @@
 <?php
 
-class Database {
+class Database
+{
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
@@ -8,7 +9,8 @@ class Database {
 
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         if ($this->conn == null) {
             $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
 
