@@ -34,7 +34,7 @@ class UserController
         $result = $this->user->create($name, $email, $mobile, $department);
 
         if ($result === "exists") {
-            echo "<script>alert('Email already exists!'); window.history.back();</script>";
+            echo "<script>alert('Email or Mobile already exists!'); window.history.back();</script>";
             exit;
         }
 
@@ -63,7 +63,7 @@ public function update() {
     $result = $this->user->update($id, $name, $email, $mobile, $department);
 
     if ($result === "exists") {
-        echo "<script>alert('Email already exists!'); window.history.back();</script>";
+        echo "<script>alert('Email or Mobile already exists!'); window.history.back();</script>";
         exit;
     }
 

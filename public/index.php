@@ -11,7 +11,7 @@ $db = $database->getConnection();
 
 // Pass DB connection to controller
 $controller = new UserController($db);  
-
+    
 // Decide which action to run based on URL
 $action = $_GET['action'] ?? 'index'; // default action is 'index'
 

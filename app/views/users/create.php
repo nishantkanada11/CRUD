@@ -1,5 +1,7 @@
 <?php include __DIR__ . '/../layouts/header.php'; ?>
-
+<div class="table-header">
+<a href="index.php">Home</a>
+</div>
 
 <h2>Create New User</h2>
 

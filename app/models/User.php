@@ -25,15 +25,16 @@ class User {
     // Create a new user
 public function create($name, $email, $mobile, $department) {
     // Check if email exists already
-    $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $res = $stmt->get_result();
+    $stmt = $this->conn->prepare(
+            "SELECT id FROM users WHERE (TRIM(email) = ? OR TRIM(mobile) = ?)"
+        );
+        $stmt->bind_param("ss", $email, $mobile);
+        $stmt->execute();
+        $res = $stmt->get_result();
 
-    if ($res->num_rows > 0) {
-        // Email already exists
-        return "exists";
-    }
+        if ($res->num_rows > 0) {
+            return "exists";
+        }
 
     // Insert if not exists
     $stmt = $this->conn->prepare(
@@ -46,26 +47,30 @@ public function create($name, $email, $mobile, $department) {
 
     // Update a user
 public function update($id, $name, $email, $mobile, $department) {
-    // Check if email is already used by another user
+    // Check if email or mobile already exists for another user
     $stmt = $this->conn->prepare(
-        "SELECT id FROM users WHERE email = ? AND id != ?"
+        "SELECT id FROM users 
+         WHERE (TRIM(email) = ? OR TRIM(mobile) = ?) AND id != ?"
     );
-    $stmt->bind_param("si", $email, $id);
+    $stmt->bind_param("ssi", $email, $mobile, $id);
     $stmt->execute();
     $res = $stmt->get_result();
 
     if ($res->num_rows > 0) {
-        // Email already exists for another user
+        // Either email or mobile already exists
         return "exists";
     }
 
     // Update if not exists
     $stmt = $this->conn->prepare(
-        "UPDATE users SET name = ?, email = ?, mobile = ?, department = ? WHERE id = ?"
+        "UPDATE users 
+         SET name = ?, email = ?, mobile = ?, department = ? 
+         WHERE id = ?"
     );
     $stmt->bind_param("ssssi", $name, $email, $mobile, $department, $id);
     return $stmt->execute();
 }
+
 
 
     // Delete a user

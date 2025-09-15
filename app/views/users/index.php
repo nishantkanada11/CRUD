@@ -2,7 +2,7 @@
 
 <h2>Users List</h2>
 <div class="table-header">
-        <a href="index.php?action=create" class="add-btn">+ Create User</a>
+        <a href="index.php?action=create">+ Create User</a>
     </div>
 
 
