@@ -30,7 +30,7 @@ class User
         $stmt = $this->conn->prepare(
             "SELECT id FROM users WHERE (TRIM(email) = ? OR TRIM(mobile) = ?)"
         );
-        $stmt->bind_param("ss", $email, $mobile);
+        $stmt->bind_param("si", $email, $mobile);
         $stmt->execute();
         $res = $stmt->get_result();
 
@@ -41,7 +41,7 @@ class User
         $stmt = $this->conn->prepare(
             "INSERT INTO users (name, email, mobile, department) VALUES (?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssss", $name, $email, $mobile, $department);
+        $stmt->bind_param("ssis", $name, $email, $mobile, $department);
         return $stmt->execute();
     }
 
@@ -51,7 +51,7 @@ class User
             "SELECT id FROM users 
          WHERE (TRIM(email) = ? OR TRIM(mobile) = ?) AND id != ?"
         );
-        $stmt->bind_param("ssi", $email, $mobile, $id);
+        $stmt->bind_param("sii", $email, $mobile, $id);
         $stmt->execute();
         $res = $stmt->get_result();
 
@@ -64,7 +64,6 @@ class User
          SET name = ?, email = ?, mobile = ?, department = ? 
          WHERE id = ?"
         );
-        $stmt->bind_param("ssssi", $name, $email, $mobile, $department, $id);
         return $stmt->execute();
     }
 

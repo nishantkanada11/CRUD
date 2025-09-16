@@ -13,7 +13,7 @@
     <input type="email" name="email" required><br><br>
 
     <label>Mobile:</label><br>
-    <input type="text" name="mobile" required><br><br>
+    <input type="number" name="mobile" required><br><br>
 
     <label>Department:</label><br>
     <input type="text" name="department" required><br><br>

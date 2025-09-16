@@ -14,7 +14,7 @@
     <input type="email" name="email" value="<?= $user['email']; ?>" required><br><br>
 
     <label>Mobile:</label><br>
-    <input type="text" name="mobile" value="<?= $user['mobile']; ?>" required><br><br>
+    <input type="number" name="mobile" value="<?= $user['mobile']; ?>" required><br><br>
 
     <label>Department:</label><br>
     <input type="text" name="department" value="<?= $user['department']; ?>" required><br><br>
